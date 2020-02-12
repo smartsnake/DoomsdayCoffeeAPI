@@ -1,0 +1,8 @@
+{
+    "mongo_url":"localhost",
+    "mongo_port":"27017",
+    "database":"Doomsday_Coffee",
+    "Drink_Collection":"Drink_Collection",
+    "Food_Collection":"Food_Collection",
+    "Home_Collection":"Home_Collection"
+}
