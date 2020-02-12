@@ -34,7 +34,16 @@ def get_foods():
 @app.route("/drinks", methods=['GET'])
 def get_drinks():
     try:
-        values = drink_collection.find({'Is_Drink': True})
+        values = drink_collection.find()
+        return dumps(values)
+    except Exception as e:
+        return dumps({'error': str(e)})
+
+
+@app.route("/home", methods=['GET'])
+def get_home():
+    try:
+        values = home_collection.find()
         return dumps(values)
     except Exception as e:
         return dumps({'error': str(e)})
