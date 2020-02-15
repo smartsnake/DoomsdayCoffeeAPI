@@ -2,6 +2,7 @@ import requests
 import json
 from pymongo import MongoClient
 import time
+import os
 
 token = '6ha3tGKyJqphGt43ATmGPq2CE'
 
@@ -13,7 +14,7 @@ debug = True
 
 class IGUtil:
     def __init__(self, config):
-        self.client = MongoClient(config['mongo_url'], int(config['mongo_port']))
+        self.client = MongoClient(os.environ['MONGODB_HOSTNAME'], 27017)
         self.db = self.client[config['database']]
         self.home_collection = self.db[config['Home_Collection']]
         self.data = None

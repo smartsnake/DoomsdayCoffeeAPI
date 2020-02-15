@@ -4,6 +4,7 @@ from threading import Thread
 from pymongo import MongoClient
 from bson.json_util import dumps
 import json
+import os
 from IGUtil import IGUtil
 
 app = Flask(__name__)
@@ -12,7 +13,7 @@ with open('config.json') as json_data_file:
     data = json.load(json_data_file)
 print(data)
 
-client = MongoClient(data['mongo_url'], int(data['mongo_port']))
+client = MongoClient(os.environ['MONGODB_HOSTNAME'], 27017)
 
 db = client[data['database']]
 drink_collection = db[data['Drink_Collection']]
