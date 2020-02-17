@@ -1,13 +1,12 @@
 
 from flask import Flask
-from threading import Thread
 from pymongo import MongoClient
 from bson.json_util import dumps
 import json
 import os
 from IGUtil import IGUtil
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 with open('config.json') as json_data_file:
     data = json.load(json_data_file)
@@ -23,7 +22,7 @@ home_collection = db[data['Home_Collection']]
 igUtil = IGUtil(data)
 
 
-@app.route("/foods", methods=['GET'])
+@application.route("/foods", methods=['GET'])
 def get_foods():
     try:
         values = food_collection.find()
@@ -32,7 +31,7 @@ def get_foods():
         return dumps({'error': str(e)})
 
 
-@app.route("/drinks", methods=['GET'])
+@application.route("/drinks", methods=['GET'])
 def get_drinks():
     try:
         values = drink_collection.find()
@@ -41,7 +40,7 @@ def get_drinks():
         return dumps({'error': str(e)})
 
 
-@app.route("/home", methods=['GET'])
+@application.route("/home", methods=['GET'])
 def get_home():
     try:
         values = home_collection.find()
@@ -50,7 +49,7 @@ def get_home():
         return dumps({'error': str(e)})
 
 
-@app.route("/", methods=['GET'])
+@application.route("/", methods=['GET'])
 def get_all():
     try:
         values = None
@@ -64,9 +63,6 @@ def get_all():
 
 
 if __name__ == '__main__':
-    thread = Thread(target=igUtil.getIGforHomeScreen)
-    thread.start()
-    thread.join()
-
-    app.debug = True
-    app.run(host='0.0.0.0')
+    ENVIRONMENT_DEBUG = os.environ.get("APP_DEBUG", True)
+    ENVIRONMENT_PORT = os.environ.get("APP_PORT", 5000)
+    application.run(host='0.0.0.0', port=ENVIRONMENT_PORT, debug=ENVIRONMENT_DEBUG)
