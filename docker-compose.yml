@@ -1,9 +1,9 @@
 version: '3'
 services:
-    api:
+    doomsday_coffee_api:
         build: .
         restart: unless-stopped
-        container_name: Doomsday_Coffee_API
+        container_name: doomsday_coffee_api
         ports: 
             - "5000:5000"
         environment:
@@ -58,7 +58,7 @@ services:
         volumes:
         - nginxdata:/var/log/nginx
         depends_on:
-        - api
+        - doomsday_coffee_api
 
 volumes:
     mongodbdata:
@@ -67,3 +67,4 @@ volumes:
         driver: local
     appdata:
         driver: local
+        
