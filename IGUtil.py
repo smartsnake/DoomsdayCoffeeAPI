@@ -66,4 +66,4 @@ class IGUtil:
     def getIGforHomeScreen(self):
         while True:
             self.getIGOnce()
-            time.sleep(30)
+            time.sleep(1800)#Wait for 30 mins
