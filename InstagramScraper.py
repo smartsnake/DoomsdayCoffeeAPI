@@ -73,22 +73,32 @@ class InstagramScraper:
                     results.append(node)
         return results
 
-Running = True
-while Running:
+    def getRecentPosts(self):
+        #IS = InstagramScraper()
+        data = self.profile_page_recent_posts("https://www.instagram.com/doomsdaycoffee/")
+
+        cleanData = []
+        for d in data:
+            cleanData.append({k: d[k] for k in ("taken_at_timestamp", "display_url", "edge_media_to_caption")})
+        return cleanData
+
+
+#Running = True
+#while Running:
     #self.getIGOnce()
     
-    IS = InstagramScraper()
-    data = IS.profile_page_recent_posts("https://www.instagram.com/doomsdaycoffee/")
+#    IS = InstagramScraper()
+#    data = IS.profile_page_recent_posts("https://www.instagram.com/doomsdaycoffee/")
 
-    cleanData = []
-    for d in data:
-        cleanData.append({k: d[k] for k in ("taken_at_timestamp", "display_url", "edge_media_to_caption")})
-    return cleanData
+#    cleanData = []
+#    for d in data:
+#        cleanData.append({k: d[k] for k in ("taken_at_timestamp", "display_url", "edge_media_to_caption")})
+#    return cleanData
 
     # print(data)
     #with open('data.json', 'w') as outfile:
     #    json.dump(data, outfile)
-    time.sleep(1800)#Wait for 30 mins
+#    time.sleep(1800)#Wait for 30 mins
 #print(f'len: {len(cleanData)}')
 
     #for index, element in enumerate(cleanData):

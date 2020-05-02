@@ -90,6 +90,10 @@ class IGUtil:
         self.home_collection = self.db[config['Home_Collection']]
         self.data = None
 
+    def saveData(self, data):
+        self.data = data
+        self.resetHomeScreen()
+
     def resetHomeScreen(self):
         self.home_collection.drop()
         self.home_collection.insert_many(self.data)
