@@ -8,10 +8,10 @@ with open('config.json') as json_data_file:
     data = json.load(json_data_file)
 ig = IGUtil(data)
 IS = InstagramScraper()
-#ig.getIGforHomeScreen()
 
 while True:
     data = IS.getRecentPosts()
     ig.saveData(data)
     time.sleep(30)#Wait 30 secs
+    print('Working...')
 

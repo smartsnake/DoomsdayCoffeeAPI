@@ -7,8 +7,7 @@ from random import choice
 _user_agents = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
 ]
- 
- 
+
 class InstagramScraper:
  
     def __init__(self, user_agents=None, proxy=None):
@@ -38,6 +37,7 @@ class InstagramScraper:
         body = soup.find('body')
         script_tag = body.find('script')
         raw_string = script_tag.text.strip().replace('window._sharedData =', '').replace(';', '')
+        print(f"Raw String: '{raw_string}'")
         return json.loads(raw_string)
  
     def profile_page_metrics(self, profile_url):
@@ -74,7 +74,6 @@ class InstagramScraper:
         return results
 
     def getRecentPosts(self):
-        #IS = InstagramScraper()
         data = self.profile_page_recent_posts("https://www.instagram.com/doomsdaycoffee/")
 
         cleanData = []
