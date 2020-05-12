@@ -4,8 +4,6 @@ from InstagramScraper import InstagramScraper
 import json
 import time 
 
-
-
 with open('config.json') as json_data_file:
     data = json.load(json_data_file)
 ig = IGUtil(data)

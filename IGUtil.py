@@ -85,7 +85,7 @@ class InstagramScraper:
 
 class IGUtil:
     def __init__(self, config):
-        self.client = MongoClient(config['mongo_url'], 27017)#os.environ['MONGODB_HOSTNAME']#config['mongo_url']
+        self.client = MongoClient(os.environ['MONGODB_HOSTNAME'], 27017)#os.environ['MONGODB_HOSTNAME']#config['mongo_url']
         self.db = self.client[config['database']]
         self.home_collection = self.db[config['Home_Collection']]
         self.data = None
