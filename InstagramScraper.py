@@ -36,8 +36,9 @@ class InstagramScraper:
         soup = BeautifulSoup(html, 'html.parser')
         body = soup.find('body')
         script_tag = body.find('script')
-        raw_string = script_tag.text.strip().replace('window._sharedData =', '').replace(';', '')
-        print(f"Raw String: '{raw_string}'")
+        #print(f"script tag: '{script_tag}'")
+        raw_string = str(script_tag).strip().replace('<script type="text/javascript">', '').replace('window._sharedData =', '').replace(';', '').replace('</script>', '')
+        #print(f"Raw String: '{raw_string}'")
         return json.loads(raw_string)
  
     def profile_page_metrics(self, profile_url):
@@ -62,11 +63,14 @@ class InstagramScraper:
         results = []
         try:
             response = self.__request_url(profile_url)
+            #print("try")
             json_data = self.extract_json_data(response)
             metrics = json_data['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']["edges"]
         except Exception as e:
+            #print("except")
             raise e
         else:
+            #print("else")
             for node in metrics:
                 node = node.get('node')
                 if node and isinstance(node, dict):
