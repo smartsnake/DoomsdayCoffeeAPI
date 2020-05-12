@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.8.1
 ADD . /app
 WORKDIR /app
 EXPOSE 5000
