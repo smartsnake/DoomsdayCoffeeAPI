@@ -21,6 +21,7 @@ home_collection = db[data['Home_Collection']]
 
 igUtil = IGUtil(data)
 
+allow_del = False
 
 @application.route("/foods", methods=['GET'])
 def get_foods():
@@ -43,6 +44,17 @@ def post_food():
     except Exception as e:
         print({'error': str(e)})
 
+@application.route("/delete_foods", methods=['DELETE'])
+def delete_foods():
+    if allow_del:
+        try:
+            food_collection.drop()
+            return 'OK'
+        except Exception as e:
+            return dumps({'error': str(e)})
+    else:
+        return ''
+
 @application.route("/drinks", methods=['GET'])
 def get_drinks():
     try:
@@ -61,7 +73,18 @@ def post_drink():
         else:
             return 'Error saving.'
     except Exception as e:
-        print({'error': str(e)})
+        return dumps({'error': str(e)})
+
+@application.route("/delete_drinks", methods=['DELETE'])
+def delete_drinks():
+    if allow_del:
+        try:
+            drink_collection.drop()
+            return 'OK'
+        except Exception as e:
+            return dumps({'error': str(e)})
+    else:
+        return ''
 
 
 @application.route("/home", methods=['GET'])
