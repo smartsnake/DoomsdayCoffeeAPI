@@ -65,7 +65,7 @@ class InstagramScraper:
             response = self.__request_url(profile_url)
             #print("try")
             json_data = self.extract_json_data(response)
-            metrics = json_data['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']["edges"]
+            metrics = json_data["entry_data"]["ProfilePage"][0]["graphql"]["user"]["edge_owner_to_timeline_media"]["edges"]
         except Exception as e:
             #print("except")
             raise e
