@@ -2,4 +2,4 @@ version: 0.2
 phases:
   build:
     commands:
-        - docker-compose up --build
+        - docker-compose up -d
