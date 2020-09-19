@@ -1,0 +1,4 @@
+phases:
+  build:
+    commands:
+        - docker-compose up --build
