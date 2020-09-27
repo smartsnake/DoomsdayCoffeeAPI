@@ -1,2 +1,2 @@
-exec venv/bin/python -m flask run &
-exec venv/bin/python checker.py
+docker-compose down --rmi all
+docker-compose up --build -d
