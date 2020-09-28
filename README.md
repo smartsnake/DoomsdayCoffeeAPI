@@ -32,7 +32,7 @@ This will stop all containers and remove them.
 
 Below is all the availible Paths and supported methods
 
-## /Home Method: (get)
+## /home Method: (get)
 
 Going to http://localhost:8080/home will return a JSON array with each object containing the following attributes.
 
@@ -81,7 +81,7 @@ Going to http://localhost:8080/drinks will return a JSON array with each object 
 
 ## /food Method: (post)
 
-Sending a POST request to localhost:8080/food with a JSON object will be saved to the food collections. Expected JSON structure.
+Sending a POST request to http://localhost:8080/food with a JSON object will be saved to the food collections. Expected JSON structure.
 
 ```
 {
@@ -96,7 +96,7 @@ Sending a POST request to localhost:8080/food with a JSON object will be saved t
 
 ## /drink Method: (post)
 
-Sending a POST request to localhost:8080/drink with a JSON object will be saved to the food collections. Expected JSON structure.
+Sending a POST request to http://localhost:8080/drink with a JSON object will be saved to the food collections. Expected JSON structure.
 
 ```
 {
