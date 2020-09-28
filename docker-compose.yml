@@ -27,7 +27,7 @@ services:
         depends_on:
         - mongodb
     mongodb: 
-        image: mongo:4.0.8
+        image: smartsnake/mongo:4.0.8
         container_name: mongodb
         ports: 
             - "27017:27017"
@@ -44,7 +44,7 @@ services:
         build:
             context: nginx
             dockerfile: Dockerfile
-        image: digitalocean.com/webserver:latest
+        image: smartsnake/webserver:latest
         container_name: webserver
         restart: unless-stopped
         environment:
